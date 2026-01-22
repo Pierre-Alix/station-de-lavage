@@ -1,8 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
-
 /**
  * EUGENE Clément
  * BOMET Pierre-Alix
@@ -32,4 +27,10 @@ public class PrestationSale extends Prestation {
         double prixInterieur = (categorie == 'C') ? 40 : 30;
         return prelavage() + lavage() + sechage() + prixInterieur;
     }
+
+    @Override
+    public String versFichier() {
+        return categorie + ":" + (int)nettoyage();
+    }
+
 }
