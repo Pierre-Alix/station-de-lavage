@@ -1,8 +1,5 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package com.mycompany.station;
+
 
 
 /**
@@ -30,7 +27,7 @@ public class Client {
         this.email = email;
     }
 
-    // Compare deux clients pour le tri par nom (ordre lexicographique) [cite: 39, 40]
+    // Compare deux clients pour le tri par nom (ordre lexicographique)
     public boolean placerApres(Client autre) {
         return this.nom.compareToIgnoreCase(autre.nom) > 0;
     }
@@ -38,6 +35,7 @@ public class Client {
     // Getters
     public String getNom() { return nom; }
     public String getTelephone() { return telephone; }
+    public int getNumero() { return numero;  }
 
     @Override
     public String toString() {
@@ -45,4 +43,14 @@ public class Client {
         if (email != null) info += " [Email: " + email + "]";
         return info;
     }
+
+    // Méthode pour le format fichier : numero:nom:tel:email
+    public String versFichier() {
+        String ligne = numero + ":" + nom + ":" + telephone;
+        if (email != null) {
+            ligne += ":" + email;
+        }
+        return ligne;
+    }
+
 }
