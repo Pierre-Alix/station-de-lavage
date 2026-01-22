@@ -1,10 +1,14 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+/**
+ * EUGENE Clément
+ * BOMET Pierre-Alix
+ * Projet Station de Lavage
  */
+
+
 package com.mycompany.station;
 
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 public class RendezVous {
     private Client client;
@@ -21,6 +25,20 @@ public class RendezVous {
 
     @Override
     public String toString() {
-        return "RDV le " + creneau + " pour " + client.getNom() + " | Prix: " + prix + "€";
+        // On définit le format souhaité : Jour-Mois-Année Heure:Minutes
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy - HH:mm");
+        String dateFormatee = creneau.format(formatter);
+        return "RDV le " + dateFormatee + " pour " + client.getNom() + " | Prix: " + prix + " euros";
+    }
+
+    public Client getClient() {
+        return client;
+    }
+
+    public String versFichier() {
+        // On utilise System.lineSeparator() pour le saut de ligne
+        return creneau.toString() + System.lineSeparator() +
+                client.getNumero() + System.lineSeparator() +
+                prestation.versFichier();
     }
 }
