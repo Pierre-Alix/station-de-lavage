@@ -1,8 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
-
 /**
  * EUGENE Clément
  * BOMET Pierre-Alix
@@ -44,4 +39,8 @@ public abstract class Prestation {
 
     // Prix total 
     public abstract double nettoyage();
+
+    // Chaque prestation doit savoir s'écrire pour le fichier
+    public abstract String versFichier();
+
 }
