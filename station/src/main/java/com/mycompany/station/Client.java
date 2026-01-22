@@ -1,12 +1,10 @@
-package com.mycompany.station;
-
-
-
 /**
  * EUGENE Clément
  * BOMET Pierre-Alix
  * Projet Station de Lavage
  */
+
+package com.mycompany.station;
 
 public class Client {
     private int numero;
@@ -54,3 +52,4 @@ public class Client {
     }
 
 }
+
