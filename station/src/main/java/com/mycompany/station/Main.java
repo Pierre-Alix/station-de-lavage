@@ -1,3 +1,9 @@
+/**
+ * EUGENE Clément
+ * BOMET Pierre-Alix
+ * Projet Station de Lavage
+ */
+
 package com.mycompany.station;
 
 //import java.time.LocalDate;
