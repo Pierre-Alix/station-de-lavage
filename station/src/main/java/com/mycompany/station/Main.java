@@ -1,9 +1,9 @@
 package com.mycompany.station;
 
-import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.time.LocalTime;
-
+//import java.time.LocalDate;
+//import java.time.LocalDateTime;
+//import java.time.LocalTime;
+import java.util.Scanner;
 
 
 /**
@@ -12,7 +12,7 @@ import java.time.LocalTime;
 public class Main {
     public static void main(String[] args) {
         // 1. Création de l'établissement
-        Etablissement station = new Etablissement("Efrei Clean Station");
+        /*Etablissement station = new Etablissement("Efrei Clean Station");
 
         // 2. Test de la gestion des clients
         System.out.println("--- Test Clients ---");
@@ -55,6 +55,63 @@ public class Main {
         System.out.println("\n--- Test Recherche Créneau ---");
         // Cette méthode affichera la liste des heures et demandera une saisie
         // LocalDateTime rdvChoisi = station.rechercherCreneauParJour(demain);
-        System.out.println("Méthode de recherche prête pour l'interaction utilisateur.");
+        System.out.println("Méthode de recherche prête pour l'interaction utilisateur.");*/
+
+        Etablissement station = new Etablissement("Station Efrei");
+
+        // 1. CHARGEMENT DES DONNÉES AU DÉMARRAGE 
+        System.out.println("--- Démarrage ---");
+        station.depuisFichierClients();
+        station.depuisFichierRDV();
+
+        // 2. MENU UTILISATEUR 
+        Scanner sc = new Scanner(System.in);
+        int choix = 0;
+
+        while (choix != 4) {
+            System.out.println("\nMENU PRINCIPAL");
+            System.out.println("1. Planifier un rendez-vous");
+            System.out.println("2. Afficher le planning d'un jour"); // Appelle tes méthodes d'affichage
+            System.out.println("3. Afficher les infos d'un client");
+            System.out.println("4. Quitter et Sauvegarder");
+            System.out.print("Choix : ");
+
+            choix = sc.nextInt();
+
+            switch (choix) {
+                case 1:
+                    station.planifier();
+                    break;
+                case 2:
+                    System.out.println("Quel jour afficher ? (0 = Aujourd'hui, 1 = Demain...)");
+                    int j = sc.nextInt();
+                    // On affiche le planning du jour demandé
+                    station.afficherPlanning(java.time.LocalDate.now().plusDays(j));
+                    break;
+                case 3:
+                    System.out.print("Nom ou téléphone : ");
+                    String rech = sc.next();
+                    station.afficherClient(rech);
+                    break;
+                case 4:
+                    System.out.println("Fermeture...");
+                    break;
+                default:
+                    System.out.println("Choix invalide.");
+            }
+        }
+
+        // 3. SAUVEGARDE AVANT DE QUITTER 
+        station.versFichierClients();
+
+        // Attention : versFichierRDV est en mode "Ajout" (append),
+        // donc si tu testes plusieurs fois, le fichier va grossir.
+        // Tu peux effacer le fichier "rdv.txt" manuellement pour remettre à zéro.
+        station.versFichierRDV();
+
+        System.out.println("Au revoir !");
+
+
     }
+
 }
